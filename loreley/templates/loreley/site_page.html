@@ -1,0 +1,10 @@
+{% extends "loreley/base.html" %}
+{% load markdown_deux_tags %}
+
+{% block content %}
+	{% if self.body %}
+		<div class="body-content">
+			{{ self.body|markdown }}
+		</div>
+	{% endif %}
+{% endblock %}
