@@ -3,9 +3,10 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel    
+from markupfield.fields import MarkupField
 
 class SitePage(Page):
-    body = models.TextField()
+    body = MarkupField(default_markup_type='markdown')
     search_name = "Site Page"
 
     indexed_fields = ('body', )
