@@ -18,11 +18,7 @@
 
         {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
         {% compress css %}
-            {# Vendor stylesheets stored locally #}
-            <link rel="stylesheet" href="{% static "waiflike/css/vendor/jquery.bxslider.css" %}" />
-
             {# Custom stylesheets #}
-            {# Less compilation relies on django compressor #}
             <link rel="stylesheet" type="text/less" href="{% static "waiflike/css/main.less" %}" />
 
         {% endcompress %}
