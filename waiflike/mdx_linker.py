@@ -1,6 +1,7 @@
 import markdown
 from markdown.util import AtomicString
 from markdown.util import etree
+from importlib import import_module
 
 LINKER_RE = r'<:([a-z]+:)?([^>|\n]+)((\|[^>|\n]+){0,})>'
 
@@ -15,12 +16,14 @@ class LinkerPattern(markdown.inlinepatterns.Pattern):
         if m.group(3) != None and len(m.group(4)):
             opts = m.group(4).split('|')[1:]
 
-        if m.group(2) == None and '__default__' in linktypes:
-            return linktypes['__default__'](m.group(3), opts)
-        elif m.group(2) in linktypes:
-            return linktypes[m.group(2)](m.group(3), opts)
+        type = m.group(2)
+        if type == None:
+            type = '__default__'
+        mod = import_module(linktypes[type])
+        c = mod.Linker()
 
-        return AtomicString('[invalid link]')
+        return c.run(m.group(3), opts)
+        return '[invalid link]'
 
 class LinkerExtension(markdown.Extension):
     def __init__(self, linktypes):
