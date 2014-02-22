@@ -1,2 +1,3 @@
 *.pyc
-loreleysite/settings_local.py
+static
+waiflikeapp/settings/local.py
