@@ -1,6 +1,10 @@
-Waiflike is a simple CMS based on [Wagtail](https://github.com/torchbox/wagtail).
-It provides a fast, easy-to-use CMS with wiki-like markup syntax based on
-Markdown.
+Waiflike is a simple content management system based on
+[Wagtail](https://github.com/torchbox/wagtail), the Django CMS from
+[Torchbox](http://www.torchbox.com/).  Waiflike takes Wagtail's easy-to-use
+backend content management interface, and extends it with a functional theme
+(based on Bootstrap) and Markdown text editing.  The result is a lightweight
+but flexible complete CMS.  (Or, at least, it will be; Waiflike is still in the
+very early stages and there are some rough edges.)
 
 ### Installation
 
