@@ -42,7 +42,7 @@ def wl_markdown(s):
     return markdownwl.markdownwl(s, MARKDOWN_EXTRAS)
 
 MARKDOWN_EXTRAS = {
-    '': sub_page,
+    '__default__': sub_page,
     'page:': sub_page,
     'image:': sub_image
 }

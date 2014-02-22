@@ -6,6 +6,8 @@ def sub_object(m, extras):
     if m.group(3) != None and len(m.group(3)):
         opts = m.group(3).split('|')[1:]
 
+    if m.group(1) == None and '__default__' in extras:
+        return extras['__default__'](m.group(2), opts)
     if m.group(1) in extras:
         return extras[m.group(1)](m.group(2), opts)
 
