@@ -12,11 +12,12 @@ Wagtail directly for that.
 
 ### Markdown syntax
 
-Waiflike defines some extensions to the standard Markdown syntax:
+Waiflike adds some useful extensions to the standard Markdown syntax:
 
-* Link to a page: <:The page name> or <:The page name|link title>
-* After uploading an image, to display it in a page use: <:image:The image name>
-* Specify the image width in pixels: <:image:The image name|width=150>
+* Link to a page: `<:The page name>` or `<:The page name|link title>`
+* After uploading an image, to display it in a page: `<:image:The image name>`
+* Specify the image width in pixels: `<:image:The image name|width=150>`
+* Align an image: `<:image:The image name|width=500|right>` (valid alignments are `left`, `right`, and `fullwidth`)
 * Syntax highlighting:
 
 <pre>
