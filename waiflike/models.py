@@ -2,19 +2,17 @@ import re
 
 from django.db import models
 from django.utils.safestring import mark_safe
-from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel    
-from wagtail import wagtailimages
 
 import markdown
-from markdown.util import AtomicString
-from markdown.util import etree
 import waiflike.mdx_linker
 
 
 class SitePage(Page):
+    site_name = settings.SITE_NAME
     body = models.TextField()
     search_name = "Text page"
 

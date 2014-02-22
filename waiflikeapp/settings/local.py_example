@@ -13,3 +13,6 @@ DATABASES = {
 
 # Set this to a long random string and keep it secret.
 SECRET_KEY='SUdpV6pDUK9EzercnA7XgVNhnaUmHbudIlmDnByrHCdU8IlwiaJk7CT25Hhqp392'
+
+# This will be used to generate the page <title>.  The default is 'Waiflike'.
+#SITE_NAME = 'My Waiflike site'
