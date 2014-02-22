@@ -17,6 +17,15 @@ Waiflike defines some extensions to the standard Markdown syntax:
 * Link to a page: <:The page name> or <:The page name|link title>
 * After uploading an image, to display it in a page use: <:image:The image name>
 * Specify the image width in pixels: <:image:The image name|width=150>
+* Syntax highlighting:
+
+<pre>
+    #!c
+    int main() {
+        printf("hello, world\n");
+        return 0;
+    }
+</pre>
 
 ### Installation
 

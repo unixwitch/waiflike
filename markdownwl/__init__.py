@@ -14,4 +14,4 @@ def sub_object(m, extras):
     return ''
 
 def markdownwl(s, extra):
-    return markdown(re.sub(r'<:([a-z]+:)?([^>|\n]+)((\|[^>|\n]+){0,})>', lambda x: sub_object(x, extra), s))
+    return markdown(re.sub(r'<:([a-z]+:)?([^>|\n]+)((\|[^>|\n]+){0,})>', lambda x: sub_object(x, extra), s), extensions=['extra', 'codehilite'], extension_configs = { 'codehilite': [ ('guess_lang', False), ]}, output_format='html5')
