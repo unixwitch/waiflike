@@ -7,12 +7,8 @@
 
 import os
 
-#PROJECT_ROOT = os.path.join(os.path.dirname(__file__))
-PROJECT_ROOT='/home/vagrant/waiflike'
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
 print PROJECT_ROOT
-
-import sys
-sys.path.append('/home/vagrant/wagtail/wagtail')
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
