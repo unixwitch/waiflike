@@ -1,5 +1,4 @@
 import sys
-sys.path.append('/home/vagrant/wagtail')
 
 DATABASES = {
     'default': {
@@ -12,4 +11,5 @@ DATABASES = {
     }
 }
 
+# Set this to a long random string and keep it secret.
 SECRET_KEY='SUdpV6pDUK9EzercnA7XgVNhnaUmHbudIlmDnByrHCdU8IlwiaJk7CT25Hhqp392'
