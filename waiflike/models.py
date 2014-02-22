@@ -7,7 +7,7 @@ from markupfield.fields import MarkupField
 
 class SitePage(Page):
     body = MarkupField(default_markup_type='markdown')
-    search_name = "Site Page"
+    search_name = "Text page"
 
     indexed_fields = ('body', )
 
