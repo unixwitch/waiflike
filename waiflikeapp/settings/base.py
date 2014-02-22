@@ -138,6 +138,7 @@ WAGTAILSEARCH_ES_INDEX = 'waiflike'
 COMPRESS_ENABLED = True
 #COMPRESS_OFFLINE = True
 
-MARKDOWN_DEUX_STYLES = {
-	"default": {}
-}
+import markdownwl
+MARKUP_FIELD_TYPES = (
+	('markdown', markdownwl.markdownwl),
+)

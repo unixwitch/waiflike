@@ -1,7 +1,9 @@
+import re
+
 from django.db import models
+from django.utils.safestring import mark_safe
 
 from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel    
 from markupfield.fields import MarkupField
 
