@@ -30,6 +30,10 @@ Waiflike adds some useful extensions to the standard Markdown syntax:
 
 ### Installation
 
+NB: Sadly, installation is more complicated than it should be for a lightweight
+CMS right now (especially since Wagtail requires node.js).  Suggestions (or
+pull requests!) to simplify installation would be appreciated.
+
 #### Install Waiflike
 
 * [Install node.js](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
