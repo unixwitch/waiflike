@@ -24,7 +24,6 @@ def sub_image(fname, optstr):
         if len(bits) > 1:
             value = bits[1]
 
-        print "[%s][%s]" % (opt, value)
         if opt == 'left':
             opts['classname'] = 'left'
         elif opt == 'right':
@@ -41,8 +40,9 @@ def sub_image(fname, optstr):
     except ObjectDoesNotExist:
         return '[image %s not found]' % (fname,)
 
+    url = image.file.url
     formatter = wagtailimages.formats.Format('', '', opts['classname'], opts['spec'])
-    return formatter.image_to_html(image, '')
+    return '<a href="%s" data-toggle="lightbox" data-type="image">%s</a>' % (image.file.url, formatter.image_to_html(image, ''))
 
 def sub_page(name, optstr):
     try:

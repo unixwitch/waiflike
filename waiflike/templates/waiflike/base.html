@@ -16,14 +16,11 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
 
-        {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
         {% compress css %}
-            {# Custom stylesheets #}
             <link rel="stylesheet" type="text/less" href="{% static "waiflike/css/main.less" %}" />
-
         {% endcompress %}
 
-        {% block extra_css %}{% endblock %} {# Override this block in individual templates in order to add stylesheets on a template by template basis #}
+        {% block extra_css %}{% endblock %}
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,6 +64,7 @@
 
         {% compress js %}
             <script src="{% static "waiflike/js/main.js" %}"></script>
+            <script src="{% static "waiflike/js/vendor/ekko-lightbox.min.js" %}"></script>
         {% endcompress %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}

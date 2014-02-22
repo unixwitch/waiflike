@@ -1,4 +1,4 @@
 *.pyc
-static
-media
-waiflikeapp/settings/local.py
+/static
+/media
+/waiflikeapp/settings/local.py
