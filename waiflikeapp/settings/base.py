@@ -8,7 +8,6 @@
 import os
 
 PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
-print PROJECT_ROOT
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
