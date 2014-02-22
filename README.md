@@ -14,21 +14,23 @@ Markdown.
   recommended.
 * As the `waiflike` user:
 
-    # Fetch Waiflike from git:
-    $ git clone https://github.com/ftarnell/waiflike.git
+<pre>
+# Fetch Waiflike from git:
+$ git clone https://github.com/ftarnell/waiflike.git
 
-    # Install dependencies
-    $ cd waiflike
-    $ mkvirtualenv waiflike
-    $ workon waiflike
-    $ pip install -r etc/requirements.txt
+# Install dependencies
+$ cd waiflike
+$ mkvirtualenv waiflike
+$ workon waiflike
+$ pip install -r etc/requirements.txt
 
-    # Set up the database
-    $ ./manage.py syncdb
-    $ ./manage.py migrate
+# Set up the database
+$ ./manage.py syncdb
+$ ./manage.py migrate
 
-    # Create static files:
-    $ ./manage.py collectstatic
+# Create static files:
+$ ./manage.py collectstatic
+</pre>
 
 * Copy `waiflikeapp/settings/local.py_example` to `waiflikeapp/settings/local.py`
   and edit it as needed.  You will want to configure the database settings at least.
@@ -44,22 +46,25 @@ Next, you'll want to run it under a web server.
 * `supervisorctl update`
 * Create `/etc/nginx/conf.d/waiflike.conf`:
 
-	server {
-		listen   80;
-		listen   [::]:80 ipv6only=on;
+<pre>
+server {
+	listen   80;
+	listen   [::]:80 ipv6only=on;
 
-		server_name waiflike.local;
+	server_name waiflike.local;
 
-		location /static/ {
-			alias /home/vagrant/waiflike/static/;
-		}
-
-		location / {
-			include uwsgi_params;
-			uwsgi_pass unix:/home/waiflike/waiflike/waiflike.sock;
-			break;
-		}
+	location /static/ {
+		alias /home/vagrant/waiflike/static/;
 	}
+
+	location / {
+		include uwsgi_params;
+		uwsgi_pass unix:/home/waiflike/waiflike/waiflike.sock;
+		break;
+	}
+}
+</pre>
+
 * `nginx -s reload`
 
 **Note**: Currently, Waiflike cannot be run in a subdirectory of the website; it
