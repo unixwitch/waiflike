@@ -28,6 +28,15 @@ Waiflike adds some useful extensions to the standard Markdown syntax:
     }
 </pre>
 
+* Tables, using the [PHP-Markdown syntax](http://michelf.ca/projects/php-markdown/extra/#table)
+
+<pre>
+    First Header  | Second Header
+    ------------- | -------------
+    Content Cell  | Content Cell
+    Content Cell  | Content Cell
+</pre>
+
 ### Installation
 
 NB: Sadly, installation is more complicated than it should be for a lightweight

@@ -8,8 +8,8 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel    
 
 import markdown
-import waiflike.mdx_linker
-
+import waiflike.mdx.linker
+import waiflike.mdx.tables
 
 class SitePage(Page):
     site_name = settings.SITE_NAME
@@ -23,7 +23,8 @@ class SitePage(Page):
         return mark_safe(markdown.markdown(self.body,
             extensions=[ 'extra',
                          'codehilite',
-                         waiflike.mdx_linker.LinkerExtension({
+                         waiflike.mdx.tables.TableExtension(),
+                         waiflike.mdx.linker.LinkerExtension({
                              '__default__':  'waiflike.linkers.page',
                              'page:':        'waiflike.linkers.page', 
                              'image:':       'waiflike.linkers.image',
