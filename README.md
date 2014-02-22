@@ -6,6 +6,10 @@ backend content management interface, and extends it with a functional theme
 but flexible complete CMS.  (Or, at least, it will be; Waiflike is still in the
 very early stages and there are some rough edges.)
 
+Waiflike is designed for creating simple, mostly static sites.  While you could
+extend it to support more complicated features, you may be better off using
+Wagtail directly for that.
+
 ### Installation
 
 #### Install Waiflike
