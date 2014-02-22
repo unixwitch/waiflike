@@ -2,12 +2,16 @@ import re
 
 from django.db import models
 from django.utils.safestring import mark_safe
+from django.core.exceptions import ObjectDoesNotExist
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel    
-import markdownwl
-from django.core.exceptions import ObjectDoesNotExist
 from wagtail import wagtailimages
+
+import markdown
+from markdown.util import AtomicString
+from markdown.util import etree
+import waiflike.mdx_linker
 
 def sub_image(fname, optstr):
     opts = {}
@@ -40,8 +44,18 @@ def sub_image(fname, optstr):
         return '[image %s not found]' % (fname,)
 
     url = image.file.url
-    formatter = wagtailimages.formats.Format('', '', opts['classname'], opts['spec'])
-    return '<a href="%s" data-toggle="lightbox" data-type="image">%s</a>' % (image.file.url, formatter.image_to_html(image, ''))
+    rendition = image.get_rendition(opts['spec'])
+
+    a = etree.Element('a')
+    a.set('data-toggle', 'lightbox')
+    a.set('data-type', 'image')
+    a.set('href', image.file.url)
+    img = etree.SubElement(a, 'img')
+    img.set('src', rendition.url)
+    img.set('class', opts['classname'])
+    img.set('width', str(rendition.width))
+    img.set('height', str(rendition.height))
+    return a
 
 def sub_page(name, optstr):
     try:
@@ -51,9 +65,12 @@ def sub_page(name, optstr):
 
         page = SitePage.objects.get(title = name)
         url = page.url
-        return '<a href="%s">%s</a>' % (url, text)
+        a = etree.Element('a')
+        a.set('href', url)
+        a.text = text
+        return a;
     except ObjectDoesNotExist:
-        return '[page %s not found]' % (name,)
+        return AtomicString('[page %s not found]' % (name,))
 
 def wl_markdown(s):
     return markdownwl.markdownwl(s, MARKDOWN_EXTRAS)
@@ -72,7 +89,16 @@ class SitePage(Page):
 
     @property
     def rendered(self):
-        return mark_safe(wl_markdown(self.body))
+        return mark_safe(markdown.markdown(self.body,
+            extensions=[ 'extra',
+                         'codehilite',
+                         waiflike.mdx_linker.LinkerExtension(MARKDOWN_EXTRAS),
+                       ], 
+            extension_configs = { 
+                'codehilite': [ 
+                    ('guess_lang', False),
+                ]
+            }, output_format='html5'))
 
 SitePage.content_panels = [
     FieldPanel('title', classname="full title"),
