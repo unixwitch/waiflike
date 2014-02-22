@@ -1,9 +1,18 @@
+###
+#
+# There are no user-servicible parts in this file.  See local.py for
+# customizable settings.
+#
+###
+
 import os
 
-PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '..', '..')
+#PROJECT_ROOT = os.path.join(os.path.dirname(__file__))
+PROJECT_ROOT='/home/vagrant/waiflike'
+print PROJECT_ROOT
 
 import sys
-sys.path.append('/var/www/loreley.flyingparchment.org.uk/wagtail/wagtail')
+sys.path.append('/home/vagrant/wagtail/wagtail')
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -12,7 +21,7 @@ ADMINS = ()
 MANAGERS = ADMINS
 
 CONN_MAX_AGE = 600  # number of seconds database connections should persist for
-ALLOWED_HOSTS = ['loreley.flyingparchment.org.uk', 'localhost']
+ALLOWED_HOSTS = [ 'localhost', 'waiflike.local']
 TIME_ZONE = 'Europe/London'
 LANGUAGE_CODE = 'en-gb'
 SITE_ID = 1
@@ -20,9 +29,9 @@ USE_I18N = True
 USE_L10N = False
 USE_TZ = True
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
-MEDIA_URL = '/p/media/'
+MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-STATIC_URL = '/p/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = ()
 
 STATICFILES_FINDERS = (
@@ -52,8 +61,8 @@ TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
 )
 
-ROOT_URLCONF = 'loreleysite.urls'
-WSGI_APPLICATION = 'loreleysite.wsgi.application'
+ROOT_URLCONF = 'waiflikeapp.urls'
+WSGI_APPLICATION = 'waiflikeapp.wsgi.application'
 TEMPLATE_DIRS = ()
 
 INSTALLED_APPS = (
@@ -81,10 +90,10 @@ INSTALLED_APPS = (
     'wagtail.wagtailredirects',
 
     'markdown_deux',
-    'loreley',
+    'waiflike',
 )
 
-EMAIL_SUBJECT_PREFIX = '[loreleysite] '
+EMAIL_SUBJECT_PREFIX = '[waiflike] '
 
 INTERNAL_IPS = ('127.0.0.1', '10.0.2.2')
 
@@ -123,13 +132,13 @@ LOGGING = {
 
 
 # WAGTAIL SETTINGS
-WAGTAIL_SITE_NAME = 'loreleysite'
+WAGTAIL_SITE_NAME = 'waiflike'
 
 # Override the search results template for wagtailsearch
-WAGTAILSEARCH_RESULTS_TEMPLATE = 'loreley/search_results.html'
-WAGTAILSEARCH_RESULTS_TEMPLATE_AJAX = 'loreley/includes/search_listing.html'
+WAGTAILSEARCH_RESULTS_TEMPLATE = 'waiflike/search_results.html'
+WAGTAILSEARCH_RESULTS_TEMPLATE_AJAX = 'waiflike/includes/search_listing.html'
 
-WAGTAILSEARCH_ES_INDEX = 'loreleysite'
+WAGTAILSEARCH_ES_INDEX = 'waiflike'
 
 COMPRESS_ENABLED = True
 #COMPRESS_OFFLINE = True
@@ -137,4 +146,3 @@ COMPRESS_ENABLED = True
 MARKDOWN_DEUX_STYLES = {
 	"default": {}
 }
-from settings_local import *

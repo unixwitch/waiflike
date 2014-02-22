@@ -1,0 +1,15 @@
+import sys
+sys.path.append('/home/vagrant/wagtail')
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/home/vagrant/wagtail.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',  # Set to empty string for localhost.
+        'PORT': '',  # Set to empty string for default.
+    }
+}
+
+SECRET_KEY='SUdpV6pDUK9EzercnA7XgVNhnaUmHbudIlmDnByrHCdU8IlwiaJk7CT25Hhqp392'

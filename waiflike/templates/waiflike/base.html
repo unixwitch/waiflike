@@ -1,4 +1,4 @@
-{% load loreley_tags cache compress static wagtailuserbar %}
+{% load waiflike_tags cache compress static wagtailuserbar %}
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -19,11 +19,11 @@
         {# Local static assets such as css, images and javascrpt should be stored at [yourapp]/static/[yourapp]/... #}
         {% compress css %}
             {# Vendor stylesheets stored locally #}
-            <link rel="stylesheet" href="{% static "loreley/css/vendor/jquery.bxslider.css" %}" />
+            <link rel="stylesheet" href="{% static "waiflike/css/vendor/jquery.bxslider.css" %}" />
 
             {# Custom stylesheets #}
             {# Less compilation relies on django compressor #}
-            <link rel="stylesheet" type="text/less" href="{% static "loreley/css/main.less" %}" />
+            <link rel="stylesheet" type="text/less" href="{% static "waiflike/css/main.less" %}" />
 
         {% endcompress %}
 
@@ -70,7 +70,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
         {% compress js %}
-            <script src="{% static "loreley/js/main.js" %}"></script>
+            <script src="{% static "waiflike/js/main.js" %}"></script>
         {% endcompress %}
 
         {% block extra_js %}{% endblock %} {# Override this block in individual templates in order to add javascript on a template by template basis #}

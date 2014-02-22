@@ -9,18 +9,18 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'SitePage'
-        db.create_table(u'loreley_sitepage', (
+        db.create_table(u'waiflike_sitepage', (
             (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
             ('body', self.gf('markupfield.fields.MarkupField')(rendered_field=True)),
             ('body_markup_type', self.gf('django.db.models.fields.CharField')(default='markdown', max_length=30)),
             ('_body_rendered', self.gf('django.db.models.fields.TextField')()),
         ))
-        db.send_create_signal(u'loreley', ['SitePage'])
+        db.send_create_signal(u'waiflike', ['SitePage'])
 
 
     def backwards(self, orm):
         # Deleting model 'SitePage'
-        db.delete_table(u'loreley_sitepage')
+        db.delete_table(u'waiflike_sitepage')
 
 
     models = {
@@ -60,7 +60,7 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'loreley.sitepage': {
+        u'waiflike.sitepage': {
             'Meta': {'object_name': 'SitePage', '_ormbases': [u'wagtailcore.Page']},
             '_body_rendered': ('django.db.models.fields.TextField', [], {}),
             'body': ('markupfield.fields.MarkupField', [], {'rendered_field': 'True'}),
@@ -86,4 +86,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['loreley']
+    complete_apps = ['waiflike']

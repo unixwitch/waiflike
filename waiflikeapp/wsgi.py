@@ -1,5 +1,5 @@
 """
-WSGI config for loreleysite project.
+WSGI config for waiflike project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/1.6/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "loreleysite.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "waiflike.settings.dev")
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()

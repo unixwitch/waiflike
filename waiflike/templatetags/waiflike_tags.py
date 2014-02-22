@@ -1,7 +1,7 @@
 from django import template
 from django.conf import settings
 
-from loreley.models import *
+from waiflike.models import *
 
 register = template.Library()
 
@@ -27,7 +27,7 @@ def has_menu_children(page):
 # Retrieves the top menu items - the immediate children of the parent page
 # The has_menu_children method is necessary because the bootstrap menu requires
 # a dropdown class to be applied to a parent
-@register.inclusion_tag('loreley/tags/top_menu.html', takes_context=True)
+@register.inclusion_tag('waiflike/tags/top_menu.html', takes_context=True)
 def top_menu(context, parent, calling_page=None):
     menuitems = parent.get_children().filter(
         live=True,
@@ -44,7 +44,7 @@ def top_menu(context, parent, calling_page=None):
 
 
 # Retrieves the children of the top menu items for the drop downs
-@register.inclusion_tag('loreley/tags/top_menu_children.html', takes_context=True)
+@register.inclusion_tag('waiflike/tags/top_menu_children.html', takes_context=True)
 def top_menu_children(context, parent):
     menuitems_children = parent.get_children()
     menuitems_children = menuitems_children.filter(
@@ -61,7 +61,7 @@ def top_menu_children(context, parent):
 
 # Retrieves the secondary links for the 'also in this section' links
 # - either the children or siblings of the current page
-@register.inclusion_tag('loreley/tags/secondary_menu.html', takes_context=True)
+@register.inclusion_tag('waiflike/tags/secondary_menu.html', takes_context=True)
 def secondary_menu(context, calling_page=None):
     pages = []
     if calling_page:
@@ -86,7 +86,7 @@ def secondary_menu(context, calling_page=None):
 # Retrieves all live pages which are children of the calling page
 #for standard index listing
 @register.inclusion_tag(
-    'loreley/tags/standard_index_listing.html',
+    'waiflike/tags/standard_index_listing.html',
     takes_context=True
 )
 def standard_index_listing(context, calling_page):
