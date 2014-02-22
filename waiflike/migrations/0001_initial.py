@@ -11,9 +11,7 @@ class Migration(SchemaMigration):
         # Adding model 'SitePage'
         db.create_table(u'waiflike_sitepage', (
             (u'page_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['wagtailcore.Page'], unique=True, primary_key=True)),
-            ('body', self.gf('markupfield.fields.MarkupField')(rendered_field=True)),
-            ('body_markup_type', self.gf('django.db.models.fields.CharField')(default='markdown', max_length=30)),
-            ('_body_rendered', self.gf('django.db.models.fields.TextField')()),
+            ('body', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal(u'waiflike', ['SitePage'])
 
@@ -60,13 +58,6 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'waiflike.sitepage': {
-            'Meta': {'object_name': 'SitePage', '_ormbases': [u'wagtailcore.Page']},
-            '_body_rendered': ('django.db.models.fields.TextField', [], {}),
-            'body': ('markupfield.fields.MarkupField', [], {'rendered_field': 'True'}),
-            'body_markup_type': ('django.db.models.fields.CharField', [], {'default': "'markdown'", 'max_length': '30'}),
-            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
-        },
         u'wagtailcore.page': {
             'Meta': {'object_name': 'Page'},
             'content_type': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'pages'", 'to': u"orm['contenttypes.ContentType']"}),
@@ -83,6 +74,11 @@ class Migration(SchemaMigration):
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'url_path': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'})
+        },
+        u'waiflike.sitepage': {
+            'Meta': {'object_name': 'SitePage', '_ormbases': [u'wagtailcore.Page']},
+            'body': ('django.db.models.fields.TextField', [], {}),
+            u'page_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['wagtailcore.Page']", 'unique': 'True', 'primary_key': 'True'})
         }
     }
 

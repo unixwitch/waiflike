@@ -5,7 +5,6 @@ from django.utils.safestring import mark_safe
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel    
-from markupfield.fields import MarkupField
 import markdownwl
 from django.core.exceptions import ObjectDoesNotExist
 from wagtail import wagtailimages
@@ -66,10 +65,14 @@ MARKDOWN_EXTRAS = {
 }
 
 class SitePage(Page):
-    body = MarkupField(markup_choices = (('markdown', wl_markdown),))
+    body = models.TextField()
     search_name = "Text page"
 
     indexed_fields = ('body', )
+
+    @property
+    def rendered(self):
+        return mark_safe(wl_markdown(self.body))
 
 SitePage.content_panels = [
     FieldPanel('title', classname="full title"),
