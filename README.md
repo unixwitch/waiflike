@@ -10,6 +10,14 @@ Waiflike is designed for creating simple, mostly static sites.  While you could
 extend it to support more complicated features, you may be better off using
 Wagtail directly for that.
 
+### Markdown syntax
+
+Waiflike defines some extensions to the standard Markdown syntax:
+
+* Link to a page: <:The page name> or <:The page name|link title>
+* After uploading an image, to display it in a page use: <:image:The image name>
+* Specify the image width in pixels: <:image:The image name|width=150>
+
 ### Installation
 
 #### Install Waiflike
@@ -87,10 +95,3 @@ must be installed in the root.  This is due to [a Wagtail bug](https://github.co
   your main page.
 * Visit http://<url>/django-admin.  Create a new Site, and select the page you
   just created as the default page.
-
-### Markdown syntax
-
-Waiflike defines some extensions to the standard Markdown syntax:
-
-* Link to a page: <:page:The page name> or <:page:The page name|link title>
-* After uploading an image, to display it in a page use: <:image:The image name>

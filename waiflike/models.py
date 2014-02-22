@@ -13,17 +13,35 @@ from wagtail import wagtailimages
 def sub_image(fname, optstr):
     opts = {}
 
-    for opt in optstr:
-        if opt in ('left', 'right', 'fullwidth'):
-            print opt
-            opts['style'] = opt
+    opts['spec'] = 'width-500'
+    opts['classname'] = 'left'
 
+    for opt in optstr:
+        bits = opt.split('=', 1)
+        opt = bits[0]
+        value = ''
+
+        if len(bits) > 1:
+            value = bits[1]
+
+        print "[%s][%s]" % (opt, value)
+        if opt == 'left':
+            opts['classname'] = 'left'
+        elif opt == 'right':
+            opts['classname'] = 'right'
+        elif opt == 'full':
+            opts['classname'] = 'full-width'
+        elif opt == 'width':
+            try:
+                opts['spec'] = "width-%d" % int(value)
+            except ValueError:
+                pass
     try:
         image = wagtailimages.models.get_image_model().objects.get(title = fname)
     except ObjectDoesNotExist:
         return '[image %s not found]' % (fname,)
 
-    formatter = wagtailimages.formats.get_image_format(opts['style'])
+    formatter = wagtailimages.formats.Format('', '', opts['classname'], opts['spec'])
     return formatter.image_to_html(image, '')
 
 def sub_page(name, optstr):
