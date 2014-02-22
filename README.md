@@ -87,3 +87,9 @@ must be installed in the root.  This is due to [a Wagtail bug](https://github.co
   your main page.
 * Visit http://<url>/django-admin.  Create a new Site, and select the page you
   just created as the default page.
+
+### Markdown syntax
+
+Waiflike defines some extensions to the standard Markdown syntax:
+
+* After uploading an image, to display it in a page use: <:image:the\_image_name.jpeg>
