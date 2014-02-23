@@ -10,6 +10,15 @@ Waiflike is designed for creating simple, mostly static sites.  While you could
 extend it to support more complicated features, you may be better off using
 Wagtail directly for that.
 
+### Features
+
+* Markdown syntax.
+* Wagtail's backend content management, allowing easy creation of pages and
+  page hierarchies (sub-pages).
+* Uploading images and documents; display images or link to documents inline
+  in pages.
+* Wiki-style quick page editing.
+
 ### Markdown syntax
 
 Waiflike adds some useful extensions to the standard Markdown syntax:
