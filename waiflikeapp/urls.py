@@ -24,21 +24,20 @@ from wagtail.wagtailsearch import register_signal_handlers as wagtailsearch_regi
 wagtailsearch_register_signal_handlers()
 
 urlpatterns = patterns('',
-    url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^django-admin/',      include(admin.site.urls)),
 
-    url(r'^admin/images/', include(wagtailimages_urls)),
-    url(r'^admin/embeds/', include(wagtailembeds_urls)),
-    url(r'^admin/documents/', include(wagtaildocs_admin_urls)),
-    url(r'^admin/snippets/', include(wagtailsnippets_urls)),
-    url(r'^admin/search/', include(wagtailsearch_admin_urls)),
-    url(r'^admin/users/', include(wagtailusers_urls)),
-    url(r'^admin/redirects/', include(wagtailredirects_urls)),
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^search/', include(wagtailsearch_frontend_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^admin/images/',      include(wagtailimages_urls)),
+    url(r'^admin/embeds/',      include(wagtailembeds_urls)),
+    url(r'^admin/documents/',   include(wagtaildocs_admin_urls)),
+    url(r'^admin/snippets/',    include(wagtailsnippets_urls)),
+    url(r'^admin/search/',      include(wagtailsearch_admin_urls)),
+    url(r'^admin/users/',       include(wagtailusers_urls)),
+    url(r'^admin/redirects/',   include(wagtailredirects_urls)),
+    url(r'^admin/',             include(wagtailadmin_urls)),
+    url(r'^search/',            include(wagtailsearch_frontend_urls)),
+    url(r'^documents/',         include(wagtaildocs_urls)),
 
-    # For anything not caught by a more specific rule above, hand over to
-    # Wagtail's serving mechanism
+    url(r'^source/(?P<slug>.+)$', 'waiflike.views.source'),
     url(r'', include(wagtail_urls)),
 )
 
