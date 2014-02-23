@@ -1,0 +1,17 @@
+{% extends "waiflike/base.html" %}
+
+{% block title %}Viewing {{ page.title }}{% endblock %}
+
+{% block heading %}
+	<div class="page-header">
+		<h2>Viewing {{ page.title }}</h2>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% if page.body %}
+		<div class="body-content">
+			<textarea>{{ page.body }}</textarea>
+		</div>
+	{% endif %}
+{% endblock %}
