@@ -11,6 +11,7 @@
 {% block extra_footer %}
 {% if user.is_authenticated %}
 | <a href="/edit/{{ self.slug }}">Quick edit</a>
-{% endif %}
+{% else %}
 | <a href="/source/{{ self.slug }}">View page source</a>
+{% endif %}
 {% endblock %}
