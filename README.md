@@ -13,8 +13,8 @@ Wagtail directly for that.
 ### Features
 
 * Markdown syntax.
-* Wagtail's backend content management, allowing easy creation of pages and
-  page hierarchies (sub-pages).
+* Hierarchial page management, including a navigation menu; choose which pages
+  appear in the menu.
 * Uploading images and documents; display images or link to documents inline
   in pages.
 * Wiki-style quick page editing.
