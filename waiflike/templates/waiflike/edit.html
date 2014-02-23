@@ -1,0 +1,20 @@
+{% extends "waiflike/base.html" %}
+{% block title %}Editing {{ page.title }}{% endblock %}
+{% block heading %}
+	<div class="page-header">
+		<h2>Editing {{ page.title }}</h2>
+	</div>
+{% endblock %}
+
+{% block content %}
+	{% if page.body %}
+		<div class="body-content">
+			<form action="/edit/{{ page.slug }}" method="post">
+				{% csrf_token %}
+				{{ form.body }}
+				<br clear='both'>
+				<input type="submit" value="Save">
+			</form>
+		</div>
+	{% endif %}
+{% endblock %}

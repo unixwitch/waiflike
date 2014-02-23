@@ -7,3 +7,9 @@
 		</div>
 	{% endif %}
 {% endblock %}
+
+{% block extra_footer %}
+{% if user.is_authenticated %}
+<a href="/edit/{{ self.slug }}">Quick edit</a>.
+{% endif %}
+{% endblock %}

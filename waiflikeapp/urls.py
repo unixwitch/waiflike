@@ -38,6 +38,7 @@ urlpatterns = patterns('',
     url(r'^documents/',         include(wagtaildocs_urls)),
 
     url(r'^source/(?P<slug>.+)$', 'waiflike.views.source'),
+    url(r'^edit/(?P<slug>.+)$', 'waiflike.views.edit'),
     url(r'', include(wagtail_urls)),
 )
 
