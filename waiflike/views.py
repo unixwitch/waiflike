@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django import forms
 
 from waiflike.models import SitePage
@@ -14,11 +15,12 @@ def source(request, slug):
 class EditForm(forms.Form):
     body = forms.CharField(widget = forms.Textarea)
 
+@login_required
 def edit(request, slug):
-    if not request.user.is_authenticated():
-        raise PermissionDenied
-
     p = get_object_or_404(SitePage, slug = slug)
+    perms = p.permissions_for_user(request.user)
+    if not perms.can_edit():
+        raise PermissionDenied
 
     if request.method == 'POST':
         form = EditForm(request.POST)
