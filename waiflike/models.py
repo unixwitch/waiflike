@@ -28,6 +28,7 @@ class SitePage(Page):
                              '__default__':  'waiflike.linkers.page',
                              'page:':        'waiflike.linkers.page', 
                              'image:':       'waiflike.linkers.image',
+                             'doc:':         'waiflike.linkers.document',
                          })
                        ], 
             extension_configs = { 

@@ -15,6 +15,7 @@ Wagtail directly for that.
 Waiflike adds some useful extensions to the standard Markdown syntax:
 
 * Link to a page: `<:The page name>` or `<:The page name|link title>`
+* Link to a document: `<:doc:The document title>`
 * After uploading an image, to display it in a page: `<:image:The image name>`
 * Specify the image width in pixels: `<:image:The image name|width=150>`
 * Align an image: `<:image:The image name|width=500|right>` (valid alignments are `left`, `right`, and `fullwidth`)
